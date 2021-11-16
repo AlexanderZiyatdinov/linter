@@ -3,6 +3,7 @@ import os
 import os.path
 import sys
 import argparse
+import io
 from lintlib import Linter
 
 
@@ -15,8 +16,8 @@ def create_argument_parser():
                                        description='valid subcommands',
                                        help='description')
 
-    file_parser = subparsers.add_parser('File',
-                                        help='launching a linter for a file')
+    file_parser = subparsers.add_parser('files',
+                                        help='launching a linter for a list of files')
 
     # TODO helpMessage
     file_parser.add_argument('filename',
@@ -24,8 +25,8 @@ def create_argument_parser():
                              help="help message",
                              nargs='+')
 
-    dir_parser = subparsers.add_parser('Dir',
-                                       help='launching a linter for a dir')
+    dir_parser = subparsers.add_parser('dirs',
+                                       help='launching a linter for list of dirs')
 
     # TODO readable DIR + helpMessage
     dir_parser.add_argument('dirname',
@@ -36,16 +37,22 @@ def create_argument_parser():
     return parser.parse_args(sys.argv[1:])
 
 
+def iterate_through_files(collection: typing.Iterable):
+    for file in collection:
+        if isinstance(file, io.TextIOWrapper):
+            return Linter(filename=file.name)
+        return Linter(filename=file)
+
+
 def main():
     parser = create_argument_parser()
     if hasattr(parser, 'dirname'):
         for dir in parser.dirname:
-            # TODO if условие для языка...
-            for filename in os.listdir(dir):
-                linter = Linter(filename=filename)
+            linter = iterate_through_files(os.listdir(dir))
+            linter.analyze()
     else:
-        for filename in parser.filename:
-            linter = Linter(filename=filename)
+        linter = iterate_through_files(parser.filename)
+        linter.analyze()
 
 
 if __name__ == "__main__":

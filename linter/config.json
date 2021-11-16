@@ -1,0 +1,13 @@
+{
+  "java":
+  {
+    "rules":
+    {
+      "indent": 4,
+      "spaces_around_the_operator": 1,
+      "count_of_empty_lines": 1,
+      "practice_of_writing": "camelcase"
+    }
+  },
+  "cpp": "NIY"
+}
