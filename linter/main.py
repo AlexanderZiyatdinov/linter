@@ -37,18 +37,18 @@ def create_argument_parser():
     return parser.parse_args(sys.argv[1:])
 
 
-def iterate_through_files(collection: typing.Iterable):
+def iterate_through_files(collection: typing.Iterable, dirname=None):
     for file in collection:
         if isinstance(file, io.TextIOWrapper):
             return Linter(filename=file.name)
-        return Linter(filename=file)
+        return Linter(filename=os.path.join(dirname, file))
 
 
 def main():
     parser = create_argument_parser()
     if hasattr(parser, 'dirname'):
         for dir in parser.dirname:
-            linter = iterate_through_files(os.listdir(dir))
+            linter = iterate_through_files(os.listdir(dir), dir)
             linter.analyze()
     else:
         linter = iterate_through_files(parser.filename)

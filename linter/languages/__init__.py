@@ -1,10 +1,7 @@
-round_brackets = '()'
-square_brackets = '[]'
-figure_brackets = '{}'
-triangle_brackets = '<>'
-
-
 class Java:
+    bracket_operators_and_calls = '()[]{}<>.;'
+    quoates = r""""'"""
+    operators = '()[]{}<>+-*/%=!&|^~?:;.'
     primitives = ['byte', 'short', 'int',
                   'long', 'char', 'float', 'double', 'boolean']
     control_structures = ['if', 'else', 'switch', 'case', 'default', 'while',
