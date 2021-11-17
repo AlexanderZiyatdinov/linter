@@ -203,23 +203,23 @@ public class camelCaseName
 python lint.py files .\examples\example.java
 ```
 
-![image-20211117133901282](C:\Users\79222\AppData\Roaming\Typora\typora-user-images\image-20211117133901282.png)
+![image-20211117133901282](https://github.com/AlexanderZiyatdinov/linter/blob/main/pictures/pic1.png)
 
 ```
 python lint.py files .\examples\example.java .\examples2\example3.java
 ```
 
-![image-20211117133953436](C:\Users\79222\AppData\Roaming\Typora\typora-user-images\image-20211117133953436.png)
+![image-20211117133953436](https://github.com/AlexanderZiyatdinov/linter/blob/main/pictures/pic2.png)
 
 ```
 python lint.py dirs .\examples\
 ```
 
-![image-20211117134045374](C:\Users\79222\AppData\Roaming\Typora\typora-user-images\image-20211117134045374.png)
+![image-20211117134045374](https://github.com/AlexanderZiyatdinov/linter/blob/main/pictures/pic3.png)
 
 ```
 python lint.py dirs .\examples\ .\examples2\
 ```
 
-![image-20211117134141220](C:\Users\79222\AppData\Roaming\Typora\typora-user-images\image-20211117134141220.png)
+![image-20211117134141220](https://github.com/AlexanderZiyatdinov/linter/blob/main/pictures/pic4.png)
 
